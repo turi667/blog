@@ -1,0 +1,23 @@
+{
+    "name": "cts/cms",
+    "require": {
+        "phpmailer/phpmailer": "^6.1"
+    },
+      "autoload": {
+
+      "classmap": [
+
+          "classes"
+
+      ]
+
+    },
+
+
+    "authors": [
+        {
+            "name": "Artur",
+            "email": "arturtola01@gmail.com"
+        }
+    ]
+}
