@@ -39,11 +39,11 @@
                                     echo "<td>$user_email</td>";
                                     echo "<td>$user_role</td>";
 
-                                    echo "<td><a class='btn btn-info' href='users.php?change_to_admin=$user_id'>Change To Admin</a></td>";
+                                    echo  "<td><a class ='btn btn-info' onClick=\"javascript: return confirm('Are you sure you want to change this user status to Admin ?');\" href='users.php?change_to_admin=$user_id'>Change To Admin</a></td>";
 
-                                    echo "<td><a class='btn btn-primary' href='users.php?change_to_sub=$user_id'>Change To Subscriber</a></td>";
+                                    echo  "<td><a class ='btn btn-primary' onClick=\"javascript: return confirm('Are you sure you want to change this user status to Subscriber ?');\" href='users.php?change_to_sub=$user_id'>Change To Subscriber</a></td>";
 
-                                    echo "<td><a class='btn btn-danger' href='users.php?delete=$user_id'>Delete</a></td>";
+                                    echo  "<td><a class ='btn btn-danger' onClick=\"javascript: return confirm('Are you sure you want to delete this User');\" href='users.php?delete=$user_id'>Delete</a></td>";
 
                                     echo "</tr>";
 
