@@ -5,6 +5,7 @@
 <?php
 
 
+
     if(isset($_SESSION['username'])) {
 
           $username = $_SESSION['username'];
@@ -18,7 +19,7 @@
                   $username = $row['username'];
                   $first_name = $row['user_firstname'];
                   $last_name = $row['user_lastname'];
-                  $email = $row['user_email'];
+                  $user_email = $row['user_email'];
                   $get_password = $row['user_password'];
 
 
@@ -32,11 +33,16 @@
               $first_name = $_POST['first_name'];
               $last_name = $_POST['last_name'];
               $post_password = $_POST['password'];
-
+              $user_email = $_POST['user_email'];
+              $oldpassword = $_POST['oldpassword'];
+             
               $error = [
 
                 'user_password'=>'',
                 'user_firstname'=>'',
+                'user_email'=>'',
+                'oldpassword'=>'',
+                'password'=>'',
                 'user_lastname'=>''
 
 
@@ -56,8 +62,19 @@
 
 
                     }
+                  if($user_email ==''){
+
+              $error['user_email'] = 'User email cannot be empty';
 
 
+                    }
+                         
+                if (!password_verify($oldpassword,$get_password)  && !empty($oldpassword))  {
+
+              $error['oldpassword'] = 'Sorry Old password Dont match ';
+
+
+                    }
               foreach ($error as $key => $value) {
 
               if(empty($value)){
@@ -71,13 +88,16 @@
           }
 
      if($post_password != $get_password && !empty($post_password)) {
-
+         
       if(strlen($post_password) < 6){
 
          $error['password'] = 'password needs to be longer then 6 characters';
 
 
-       }else {
+       }  
+
+         
+         else {
 
         $password = password_hash($post_password, PASSWORD_BCRYPT, array("cost" => 10));
 
@@ -92,14 +112,14 @@ if(empty($error)){
 
 
 
-    $edit_user_query = mysqli_query($connection, "UPDATE users SET user_firstname = '$first_name', user_lastname = '$last_name', user_password = '$password' WHERE user_id = $user_id" );
+    $edit_user_query = mysqli_query($connection, "UPDATE users SET user_firstname = '$first_name',user_email = '$user_email', user_lastname = '$last_name', user_password = '$password' WHERE user_id = $user_id" );
 
     confirmQuery($edit_user_query);
 
 
 
-} }
-
+} 
+          }
 ?>
 
     <div id="wrapper">
@@ -148,21 +168,33 @@ if(empty($error)){
 
                         <div class="form-group">
 
-                            <label for="email">Email</label
+                            <label for="user_email">Email</label>
 
-                            <input value="<?php echo $email; ?>" class="form-control" id="email" type="email" name="email" disabled>
+                            <input value="<?php echo $user_email; ?>" class="form-control" id="user_email" type="email" name="user_email" >
+                             <p> <?php echo isset($error['user_email']) ? $error['user_email'] : '' ?></p>
+
 
                         </div>
 
+                        <div class="form-group">
+
+                            <label for="oldpassword">Old Password</label>
+
+                            <input autocomplete="off" id="oldpassword" type="password" class="form-control" name="oldpassword" placeholder="Old Password">
+                            
+                        <p> <?php echo isset($error['oldpassword']) ? $error['oldpassword'] : '' ?></p>
+
+                        </div>
                         <div class="form-group">
 
                             <label for="password">Password</label>
 
                             <input autocomplete="off" id="password" type="password" class="form-control" name="password" placeholder="New Password">
                             
-                         <?php echo isset($error['password']) ? $error['password'] : '' ?></p>
+                        <p> <?php echo isset($error['password']) ? $error['password'] : '' ?></p>
 
                         </div>
+                           
 
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit" name="update_profile">Update Profile</button>
