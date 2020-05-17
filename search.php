@@ -15,9 +15,9 @@
 
 // Searching based on the status of the posts and based on the ROLE of USER . If its Admin he can search anything, If User can check only what its published
 
-            if(isset($_POST['submit'])){
+            if(isset($_GET['submit'])){
 
-            $search = $_POST['search'];
+            $search = $_GET['search'];
 
 
          if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin' ) {
@@ -31,7 +31,7 @@
          } else {
 
 
-            $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search%' AND post_status = 'published' ";
+            $query = "SELECT * FROM posts WHERE  post_status = 'published' AND (post_tags LIKE '%$search%' OR post_title LIKE '%$search%' OR post_content LIKE '%$search%') ";
 
             $search_query = mysqli_query($connection, $query);
 
