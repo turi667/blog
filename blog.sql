@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2020 at 03:52 AM
+-- Generation Time: May 18, 2020 at 02:21 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -128,10 +128,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `user_image`, `user_role`, `randSalt`, `token`, `activated`, `confirmtoken`, `joined`) VALUES
-(199, 'arturtola', '$2y$12$FjjdoaFR7yTsCHKj.tavIu7bX2iGWzmSkwm57/.P6lhiMqPF6mmyW', 'artur', 'tola', 'arturtola@gmail.com', '', 'subscriber', '$2y$10$iusesomecrazystrings22', '', 1, '', '2020-05-07'),
-(200, 'admin', '$2y$12$KIaegU5lxGp0wyDVUt9I4emp6G7RzXyiqY20kWEvzAwz3vi2QCuCm', 'admin', 'admin', 'admin@gmail.com', '', 'admin', '$2y$10$iusesomecrazystrings22', '', 1, '', '2020-05-07'),
-(201, 'albanhoxha', '$2y$12$XIn7gW9OOk6rBtQXd65uwOC.tPcnMHkrkDqlHRndUzvKm2gku57bq', 'alban', 'hoxha', 'alban@gmail.com', '', 'subscriber', '$2y$10$iusesomecrazystrings22', '', 1, '', '2020-05-07');
+INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `user_lastname`, `user_email`, `user_role`, `randSalt`, `token`, `activated`, `confirmtoken`, `joined`) VALUES
+(199, 'arturtola', '$2y$12$FjjdoaFR7yTsCHKj.tavIu7bX2iGWzmSkwm57/.P6lhiMqPF6mmyW', 'artur', 'tola', 'arturtola@gmail.com', 'subscriber', '$2y$10$iusesomecrazystrings22', '', 1, '', '2020-05-07'),
+(200, 'admin', '$2y$12$KIaegU5lxGp0wyDVUt9I4emp6G7RzXyiqY20kWEvzAwz3vi2QCuCm', 'admin', 'admin', 'admin@gmail.com', 'admin', '$2y$10$iusesomecrazystrings22', '', 1, '', '2020-05-07'),
+(201, 'albanhoxha', '$2y$12$XIn7gW9OOk6rBtQXd65uwOC.tPcnMHkrkDqlHRndUzvKm2gku57bq', 'alban', 'hoxha', 'alban@gmail.com', 'subscriber', '$2y$10$iusesomecrazystrings22', '', 1, '', '2020-05-07');
 
 -- --------------------------------------------------------
 
