@@ -72,8 +72,11 @@
                                  </div>
                                   <a href="/cms/forgot.php?forgot=<?php echo uniqid(true); ?>">Forgot Password</a>
                               <div class="input-group">
+                                      
                              <input type="checkbox" name="remember" <?php if(isset($_COOKIE["username"])) { ?> checked <?php } ?> />
+                                      
                              <label for="remember-me">Remember me</label>
+                                      
 
                                <div class="form-group">
                               <span class="input-group-btn">
